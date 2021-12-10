@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/core/widgets/action_button.dart';
+import 'package:ifood_clone/src/core/widgets/action_button_widget.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class GetStartedScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Image.asset("assets/images/toy_faces.png", width: screenWidth),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -45,7 +45,9 @@ class GetStartedScreen extends StatelessWidget {
                     "Get Started",
                     backgroundColor: Colors.white,
                     foregroundColor: const Color(0xFFFF460A),
-                    onPressed: () => false,
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/login");
+                    },
                   ),
                 ],
               ),

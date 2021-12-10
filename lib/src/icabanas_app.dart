@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/get_started/get_started_screen.dart';
+import 'package:ifood_clone/src/screens/get_started/get_started_screen.dart';
 
 class ICabanasApp extends StatelessWidget {
   const ICabanasApp({Key? key}) : super(key: key);

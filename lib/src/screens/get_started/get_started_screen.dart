@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/components/action_button.dart';
+import 'package:ifood_clone/src/core/widgets/action_button.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({Key? key}) : super(key: key);

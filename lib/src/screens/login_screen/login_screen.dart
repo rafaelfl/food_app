@@ -28,8 +28,16 @@ class LoginScreen extends StatelessWidget {
           toolbarHeight: _isKeyboardOpen ? _height * 0.2 : _height * 0.41,
           shadowColor: const Color(0xFFE7E7E7),
           bottom: const TabBar(
-            indicatorColor: Color(0xFFFA4A0C),
-            indicatorSize: TabBarIndicatorSize.label,
+            // indicatorColor: Color(0xFFFA4A0C),
+            // indicatorSize: TabBarIndicatorSize.label,
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(
+                width: 2.0,
+                color: Color(0xFFFA4A0C),
+              ),
+              insets: EdgeInsets.symmetric(horizontal: 45.0),
+            ),
+
             tabs: [
               Tab(child: Text("Login", style: TextStyle(color: Colors.black))),
               Tab(

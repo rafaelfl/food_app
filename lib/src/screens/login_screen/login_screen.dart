@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/core/widgets/action_button_widget.dart';
+import 'package:ifood_clone/src/screens/login_screen/widgets/login_widget/login_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -7,6 +7,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _height = MediaQuery.of(context).size.height;
+
+    // detecção se o teclado está aberto
+    final bool _isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
 
     return DefaultTabController(
       length: 2,
@@ -17,9 +20,12 @@ class LoginScreen extends StatelessWidget {
             widthFactor: 0.4,
             child: Image.asset("assets/images/logo.png"),
           ),
+          centerTitle: true,
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
-          toolbarHeight: _height * 0.41,
+
+          // caso o teclado esteja aberto, reduz o tamanho da barra
+          toolbarHeight: _isKeyboardOpen ? _height * 0.2 : _height * 0.41,
           shadowColor: const Color(0xFFE7E7E7),
           bottom: const TabBar(
             indicatorColor: Color(0xFFFA4A0C),
@@ -40,7 +46,7 @@ class LoginScreen extends StatelessWidget {
         ),
         body: SafeArea(
           child: TabBarView(children: [
-            Container(color: Colors.blue),
+            const LoginWidget(),
             Container(color: Colors.yellow),
           ]),
         ),

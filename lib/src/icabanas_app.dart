@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ifood_clone/src/screens/get_started/get_started_screen.dart';
 import 'package:ifood_clone/src/screens/login_screen/login_screen.dart';
 
+import 'screens/home_screen/home_screen.dart';
+
 class ICabanasApp extends StatelessWidget {
   const ICabanasApp({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class ICabanasApp extends StatelessWidget {
       routes: {
         "/": (context) => const GetStartedScreen(),
         "/login": (context) => const LoginScreen(),
+        "/home": (context) => const HomeScreen(),
       },
       theme: ThemeData(
         primaryColor: const Color(0xFFFA4A0C),

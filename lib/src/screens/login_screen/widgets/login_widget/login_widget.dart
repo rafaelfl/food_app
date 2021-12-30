@@ -12,34 +12,10 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final LoginWidgetController _controller = LoginWidgetController();
 
-  final TextEditingController _emailTextController = TextEditingController();
-  final TextEditingController _passwordTextController = TextEditingController();
-
   String _email = "";
   String _password = "";
 
   String _msgErro = "";
-
-  @override
-  void initState() {
-    super.initState();
-
-    _emailTextController.addListener(() {
-      _email = _emailTextController.text;
-      print(_email);
-    });
-
-    _passwordTextController
-        .addListener(() => _password = _passwordTextController.text);
-  }
-
-  @override
-  void dispose() {
-    _emailTextController.dispose();
-    _passwordTextController.dispose();
-
-    super.dispose();
-  }
 
   void doLogin() {
     if (_controller.login(_email, _password)) {
@@ -48,6 +24,9 @@ class _LoginWidgetState extends State<LoginWidget> {
       });
 
       print("Login realizado com sucesso");
+
+      Navigator.pushNamedAndRemoveUntil(
+          context, "/home", ModalRoute.withName('/'));
     } else {
       setState(() {
         _msgErro = "Erro na autenticação!";

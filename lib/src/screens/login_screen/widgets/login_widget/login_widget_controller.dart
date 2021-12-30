@@ -1,7 +1,7 @@
 class LoginWidgetController {
   bool login(String email, String password) {
     print(">>> $email // $password");
-    if (email == "rafaelf@lsdi.ufma.br" && password == "123456") {
+    if (email == "email@email.com" && password == "123456") {
       return true;
     }
 

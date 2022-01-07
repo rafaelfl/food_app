@@ -18,9 +18,10 @@ class ICabanasApp extends StatelessWidget {
       routes: {
         "/": (context) => const GetStartedScreen(),
         "/login": (context) => const LoginScreen(),
-        "/home": (context) => const HomeScreen(),
+        "/home": (context) => HomeScreen(),
       },
       theme: ThemeData(
+        brightness: Brightness.light,
         primaryColor: const Color(0xFFFA4A0C),
         textTheme: const TextTheme(
           headline1: TextStyle(

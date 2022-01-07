@@ -55,7 +55,12 @@ class LoginScreen extends StatelessWidget {
         body: SafeArea(
           child: TabBarView(children: [
             const LoginWidget(),
-            Container(color: Colors.yellow),
+            Center(
+                child: Text("Sign-up",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1
+                        ?.copyWith(color: Colors.black))),
           ]),
         ),
       ),

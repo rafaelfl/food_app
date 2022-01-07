@@ -33,96 +33,92 @@ class DishButtonWidget extends StatelessWidget {
       // Inkwell para responder ao toque
       return InkWell(
         onTap: onPressed,
-        child: Padding(
-          // espaçamento horizontal entre os elementos
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          child: AspectRatio(
-            aspectRatio: aspectRatio,
-            child: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                // fundo branco
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: FractionallySizedBox(
-                    heightFactor: 0.8,
-                    widthFactor: 1,
-                    alignment: Alignment.center,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 5.0, // suavidade da sombra
-                            spreadRadius: 1.0, // espalhamento da sombra
-                            offset: Offset(
-                              4.0, // move 4 para a direita
-                              4.0, // move 4 para baixo
-                            ),
+        child: AspectRatio(
+          aspectRatio: aspectRatio,
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              // fundo branco
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: FractionallySizedBox(
+                  heightFactor: 0.8,
+                  widthFactor: 1,
+                  alignment: Alignment.center,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 5.0, // suavidade da sombra
+                          spreadRadius: 1.0, // espalhamento da sombra
+                          offset: Offset(
+                            4.0, // move 4 para a direita
+                            4.0, // move 4 para baixo
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                // imagem do prato
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: _maxHeight * 0.05),
-                    child: FractionallySizedBox(
-                      widthFactor: 1.2,
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        'assets/images/$_dishImage.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                // texto do nome do prato
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: _maxHeight * 0.4),
-                    child: FractionallySizedBox(
-                      widthFactor: 0.6,
-                      child: Text(
-                        dishName,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'SFPro',
-                          fontSize: _maxHeight * 22 / 300,
-                          fontWeight: FontWeight.w600,
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // imagem do prato
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(top: _maxHeight * 0.05),
+                  child: FractionallySizedBox(
+                    widthFactor: 1.2,
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/images/$_dishImage.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              // texto do nome do prato
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(top: _maxHeight * 0.4),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.6,
+                    child: Text(
+                      dishName,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'SFPro',
+                        fontSize: _maxHeight * 22 / 300,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                 ),
-                // texto do preço do prato
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: _maxHeight * 0.75),
-                    child: FractionallySizedBox(
-                      widthFactor: 0.8,
-                      child: Text(
-                        dishPrice,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'SFPro',
-                          fontSize: _maxHeight * 18 / 300,
-                          color: const Color(0xFFFA4A0C),
-                          fontWeight: FontWeight.w600,
-                        ),
+              ),
+              // texto do preço do prato
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(top: _maxHeight * 0.75),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.8,
+                    child: Text(
+                      dishPrice,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'SFPro',
+                        fontSize: _maxHeight * 18 / 300,
+                        color: const Color(0xFFFA4A0C),
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );

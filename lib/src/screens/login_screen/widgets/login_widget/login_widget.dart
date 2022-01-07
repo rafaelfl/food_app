@@ -12,8 +12,8 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final LoginWidgetController _controller = LoginWidgetController();
 
-  String _email = "";
-  String _password = "";
+  String _email = "email@email.com";
+  String _password = "123456";
 
   String _msgErro = "";
 
@@ -23,16 +23,16 @@ class _LoginWidgetState extends State<LoginWidget> {
         _msgErro = "";
       });
 
-      print("Login realizado com sucesso");
+      debugPrint("Login realizado com sucesso");
 
       Navigator.pushNamedAndRemoveUntil(
           context, "/home", ModalRoute.withName('/'));
     } else {
       setState(() {
-        _msgErro = "Erro na autenticação!";
+        _msgErro = "Authentication Error!";
       });
 
-      print("Erro no login");
+      debugPrint("Erro no login");
     }
   }
 
@@ -44,7 +44,8 @@ class _LoginWidgetState extends State<LoginWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
+            TextFormField(
+                initialValue: _email,
                 onChanged: (value) => _email = value,
                 decoration: const InputDecoration(
                   labelText: 'Email address',
@@ -54,7 +55,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                 enableSuggestions: false,
                 keyboardType: TextInputType.visiblePassword),
             const SizedBox(height: 15),
-            TextField(
+            TextFormField(
+              initialValue: _password,
               onChanged: (value) => _password = value,
               decoration: const InputDecoration(
                 labelText: 'Password',

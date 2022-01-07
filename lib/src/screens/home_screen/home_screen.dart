@@ -1,73 +1,110 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/core/widgets/dish_button_widget.dart';
+import 'package:ifood_clone/src/core/model/dish.dart';
+import 'package:ifood_clone/src/screens/home_screen/widgets/app_bar_widget.dart';
+import 'package:ifood_clone/src/screens/home_screen/tabs/home_tab_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final List<Dish> dataDishes = [
+    Dish(
+      dishName: "Veggie tomato mix",
+      dishPrice: "N1,900",
+      dishImage: "veggie_tomato",
+    ),
+    Dish(
+      dishName: "Egg and cucumber",
+      dishPrice: "N1,500",
+      dishImage: "egg_cucmber",
+    ),
+    Dish(
+      dishName: "Fried Chicken m.",
+      dishPrice: "N2,100",
+      dishImage: "fried_chicken",
+    ),
+    Dish(
+      dishName: "Moi-moi and ekpa",
+      dishPrice: "N2,30",
+      dishImage: "moimoi",
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F2),
-      // faz com que o corpo da tela ocupe o espaço da app bar também
-      // extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        // botem os botões de ação na app bar, conforme o template
-        title: const Text(
-          'Home',
-          style: TextStyle(color: Colors.black),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF2F2F2),
+        resizeToAvoidBottomInset: false,
+        appBar: AppBarWidget(
+          maxWidth: MediaQuery.of(context).size.width,
+          onMenuPressed: () => debugPrint('Menu'),
+          onCartPressed: () => debugPrint('Cart'),
         ),
-        centerTitle: true,
-        // deixa a app bar transparente
-        backgroundColor: Colors.transparent,
-        // some com a sombra (já que não tem elevação)
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
+        body: TabBarView(
           children: [
-            // exemplo de widget que ocupa um espaço na tela
-            Container(
-              color: Colors.red,
-              child: const SizedBox(
-                height: 100,
-                child: Center(
-                  child: Text("Home page"),
+            HomeTabWidget(dataDishes: dataDishes),
+            Center(
+              child: Text("Favoritos",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(color: Colors.black)),
+            ),
+            Center(
+              child: Text("Perfil",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(color: Colors.black)),
+            ),
+            Center(
+              child: Text("Últimos\npedidos",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(color: Colors.black)),
+            ),
+          ],
+        ),
+        bottomNavigationBar: PreferredSize(
+          preferredSize: Size(
+            MediaQuery.of(context).size.width * 0.7,
+            MediaQuery.of(context).size.width * 0.2,
+          ),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.7,
+            height: MediaQuery.of(context).size.width * 0.2,
+            child: Theme(
+              data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+              ),
+              child: const TabBar(
+                indicator: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x33FA4A0C),
+                      blurRadius: 10.0,
+                      spreadRadius: 0.1,
+                    ),
+                  ],
                 ),
+                indicatorSize: TabBarIndicatorSize.label,
+                tabs: [
+                  Tab(
+                    icon: Icon(Icons.home, size: 35),
+                  ),
+                  Tab(icon: Icon(Icons.favorite_border, size: 35)),
+                  Tab(icon: Icon(Icons.person_outline, size: 35)),
+                  Tab(icon: Icon(Icons.restore, size: 35)),
+                ],
+                labelColor: Color(0xFFFA4A0C),
+                unselectedLabelColor: Color(0xFFADADAF),
               ),
             ),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxHeight: 250),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                clipBehavior: Clip.none,
-                children: [
-                  DishButtonWidget(
-                    dishName: "Veggie tomato mix",
-                    dishPrice: "N1,900",
-                    onPressed: () => print("Veggie tomato mix"),
-                  ),
-                  DishButtonWidget(
-                    dishName: "Egg and cucumber",
-                    dishPrice: "N1,500",
-                    dishImage: "egg_cucmber",
-                    onPressed: () => print("Egg and cucumber"),
-                  ),
-                  DishButtonWidget(
-                    dishName: "Fried Chicken m.",
-                    dishPrice: "N2,100",
-                    dishImage: "fried_chicken",
-                    onPressed: () => print("Fried Chicken m."),
-                  ),
-                  DishButtonWidget(
-                    dishName: "Moi-moi and ekpa",
-                    dishPrice: "N2,30",
-                    dishImage: "moimoi",
-                    onPressed: () => print("Moi-moi and ekpa"),
-                  ),
-                ],
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );

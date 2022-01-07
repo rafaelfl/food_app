@@ -60,7 +60,7 @@ class DishesMenuWidget extends StatelessWidget {
                         );
                       },
                       separatorBuilder: (_, __) => const SizedBox(
-                        width: 50,
+                        width: 40,
                       ),
                       itemCount: dataDishes.length,
                     ),

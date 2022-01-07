@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: dataDishes.length,
       child: Scaffold(
         backgroundColor: const Color(0xFFF2F2F2),
         resizeToAvoidBottomInset: false,
@@ -67,42 +67,36 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: PreferredSize(
-          preferredSize: Size(
-            MediaQuery.of(context).size.width * 0.7,
-            MediaQuery.of(context).size.width * 0.2,
-          ),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.7,
-            height: MediaQuery.of(context).size.width * 0.2,
-            child: Theme(
-              data: ThemeData(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-              ),
-              child: const TabBar(
-                indicator: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x33FA4A0C),
-                      blurRadius: 10.0,
-                      spreadRadius: 0.1,
-                    ),
-                  ],
-                ),
-                indicatorSize: TabBarIndicatorSize.label,
-                tabs: [
-                  Tab(
-                    icon: Icon(Icons.home, size: 35),
+        bottomNavigationBar: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.7,
+          height: MediaQuery.of(context).size.width * 0.2,
+          child: Theme(
+            data: ThemeData(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+            ),
+            child: const TabBar(
+              indicator: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x33FA4A0C),
+                    blurRadius: 10.0,
+                    spreadRadius: 0.1,
                   ),
-                  Tab(icon: Icon(Icons.favorite_border, size: 35)),
-                  Tab(icon: Icon(Icons.person_outline, size: 35)),
-                  Tab(icon: Icon(Icons.restore, size: 35)),
                 ],
-                labelColor: Color(0xFFFA4A0C),
-                unselectedLabelColor: Color(0xFFADADAF),
               ),
+              indicatorSize: TabBarIndicatorSize.label,
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.home, size: 35),
+                ),
+                Tab(icon: Icon(Icons.favorite_border, size: 35)),
+                Tab(icon: Icon(Icons.person_outline, size: 35)),
+                Tab(icon: Icon(Icons.restore, size: 35)),
+              ],
+              labelColor: Color(0xFFFA4A0C),
+              unselectedLabelColor: Color(0xFFADADAF),
             ),
           ),
         ),

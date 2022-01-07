@@ -40,7 +40,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       // ficaram brancos. Para garantir que eles fiquem pretos,
       // é necessário fazer setar o icon brightness
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+        statusBarIconBrightness: Brightness.light, // For Android (dark icons)
         statusBarBrightness: Brightness.light, // For iOS (dark icons)
       ),
     );

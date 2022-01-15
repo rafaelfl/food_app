@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ifood_clone/src/core/model/dish.dart';
+import 'package:ifood_clone/src/core/model/menu_model.dart';
 import 'package:ifood_clone/src/core/widgets/dish_button_widget.dart';
+import 'package:provider/provider.dart';
 
 class DishesMenuWidget extends StatelessWidget {
-  final List<Dish> dataDishes;
-
-  const DishesMenuWidget({Key? key, required this.dataDishes})
-      : super(key: key);
+  const DishesMenuWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,25 +44,29 @@ class DishesMenuWidget extends StatelessWidget {
                 constraints: BoxConstraints(maxHeight: _maxHeight * 0.68),
                 child: TabBarView(
                   children: [
-                    ListView.separated(
-                      padding:
-                          EdgeInsets.symmetric(vertical: _maxHeight * 0.02),
-                      scrollDirection: Axis.horizontal,
-                      clipBehavior: Clip.none,
-                      itemBuilder: (_, item) {
-                        return DishButtonWidget(
-                          dishName: dataDishes[item].dishName,
-                          dishPrice: dataDishes[item].dishPrice,
-                          dishImage: dataDishes[item].dishImage,
-                          onPressed: () => debugPrint(
-                              "Prato clicado: ${dataDishes[item].dishName}"),
-                        );
-                      },
-                      separatorBuilder: (_, __) => const SizedBox(
-                        width: 40,
-                      ),
-                      itemCount: dataDishes.length,
-                    ),
+                    Consumer<MenuModel>(builder: (context, menuModel, child) {
+                      final List<Dish> _filteredDishes = menuModel.filteredMenu;
+
+                      return ListView.separated(
+                        padding:
+                            EdgeInsets.symmetric(vertical: _maxHeight * 0.02),
+                        scrollDirection: Axis.horizontal,
+                        clipBehavior: Clip.none,
+                        itemBuilder: (_, item) {
+                          return DishButtonWidget(
+                            dishName: _filteredDishes[item].dishName,
+                            dishPrice: _filteredDishes[item].dishPrice,
+                            dishImage: _filteredDishes[item].dishImage,
+                            onPressed: () => debugPrint(
+                                "Prato clicado: ${_filteredDishes[item].dishName}"),
+                          );
+                        },
+                        separatorBuilder: (_, __) => const SizedBox(
+                          width: 40,
+                        ),
+                        itemCount: _filteredDishes.length,
+                      );
+                    }),
                     Center(
                         child: Text("Drinks",
                             style: Theme.of(context)

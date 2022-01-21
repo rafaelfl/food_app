@@ -25,7 +25,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         _msgErro = "";
       });
 
-      debugPrint("Login realizado com sucesso");
+      debugPrint("Successful login!");
 
       Navigator.pushNamedAndRemoveUntil(
           context, "/home", ModalRoute.withName('/'));

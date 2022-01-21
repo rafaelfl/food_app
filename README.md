@@ -4,7 +4,7 @@
 
 ## About
 
-<p align="center">Small educational project developed with the objective of presenting the concepts related to the development of mobile applications using Flutter for the course *Mobile Application Development* (2021.2) of the Computer Engineering Course - Federal University of Maranhão (UFMA)
+<p align="center">Small educational project developed with the objective of presenting the concepts related to the development of mobile applications using Flutter for the course **Mobile Application Development** (2021.2) of the Computer Engineering Course - Federal University of Maranhão (UFMA)
 </p>
 
 
@@ -122,4 +122,4 @@ $ flutter run --dart-define=endpointDishes=SOME_VALUE1 \
 
 Developed with 💜 by Rafael Fernandes Lopes
 
-[![Twitter Badge](https://img.shields.io/badge/-@rafaelf_l-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/rafaelf_l)](https://twitter.com/rafaelf_l) [![Linkedin Badge](https://img.shields.io/badge/-Rafael%20Fernandes%20Lopes-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rafael-fernandes-lopes/)](https://www.linkedin.com/in/rafael-fernandes-lopes/)
+[![Linkedin Badge](https://img.shields.io/badge/-Rafael%20Fernandes%20Lopes-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rafael-fernandes-lopes/)](https://www.linkedin.com/in/rafael-fernandes-lopes/)

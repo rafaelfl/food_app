@@ -1,0 +1,24 @@
+{
+    "dishes" : [
+        {
+            "dishName": "Veggie tomato mix",
+            "dishPrice": "N1,900",
+            "dishImage": "veggie_tomato"
+        },
+        {
+            "dishName": "Egg and cucumber",
+            "dishPrice": "N1,500",
+            "dishImage": "egg_cucmber"
+        },
+        {
+            "dishName": "Fried Chicken m.",
+            "dishPrice": "N2,100",
+            "dishImage": "fried_chicken"
+        },
+        {
+            "dishName": "Moi-moi and ekpa",
+            "dishPrice": "N2,30",
+            "dishImage": "moimoi"
+        }
+    ]
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifood_clone/src/core/model/dish.dart';
 import 'package:ifood_clone/src/core/model/menu_model.dart';
+import 'package:ifood_clone/src/screens/home_screen/tabs/home/home_tab_widget_controller.dart';
 import 'package:ifood_clone/src/screens/home_screen/widgets/dishes_menu_widget.dart';
 import 'package:ifood_clone/src/screens/home_screen/widgets/search_field_widget.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +15,10 @@ class HomeTabWidget extends StatefulWidget {
 
 class _HomeTabWidgetState extends State<HomeTabWidget> {
   final TextEditingController _searchController = TextEditingController();
+  final HomeTabWidgetController _controller = HomeTabWidgetController();
 
-  // List<Dish> _filteredDishes = [];
+  bool loading = true;
+  String error = "";
 
   @override
   void initState() {
@@ -23,28 +26,26 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
 
     final MenuModel _menuModel = Provider.of<MenuModel>(context, listen: false);
 
-    // _filteredDishes = [..._menuModel.menu];
+    _controller.getDishesList().then((List<Dish> dishes) {
+      setState(() {
+        _menuModel
+          ..clearAll()
+          ..addAllDishes(dishes);
+
+        error = "";
+        loading = false;
+      });
+    }).catchError((err) {
+      debugPrint(err.toString());
+
+      setState(() {
+        error = err.toString();
+        loading = false;
+      });
+    });
 
     _searchController.addListener(() {
-      // debugPrint("Texto a pesquisar: ${_searchController.text}");
-
-      if (_searchController.text.isEmpty) {
-        // se não há texto, não filtra
-        // setState(() {
-        //   _filteredDishes = [..._menuModel.menu];
-        // });
-        _menuModel.filterMenu("");
-      } else {
-        // setState(() {
-        //   // se há texto, cria uma lista com os itens filtrados pelo nome
-        //   _filteredDishes = _menuModel.menu
-        //       .where((dish) => dish.dishName
-        //           .toLowerCase()
-        //           .contains(_searchController.text.toLowerCase()))
-        //       .toList();
-        // });
-        _menuModel.filterMenu(_searchController.text); // filtra o menu
-      }
+      _menuModel.filterMenu(_searchController.text); // menu filter
     });
   }
 
@@ -57,6 +58,21 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
   @override
   Widget build(BuildContext context) {
     final _maxWidth = MediaQuery.of(context).size.width;
+
+    if (error.isNotEmpty) {
+      return Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Center(
+          child: Text(error),
+        ),
+      );
+    }
+
+    if (loading) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
 
     return Padding(
       padding: EdgeInsets.only(
@@ -74,7 +90,7 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
                 ),
           ),
           SearchFieldWidget(controller: _searchController),
-          Expanded(child: DishesMenuWidget()),
+          const Expanded(child: DishesMenuWidget()),
         ],
       ),
     );

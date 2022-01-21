@@ -12,8 +12,10 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final LoginWidgetController _controller = LoginWidgetController();
 
-  String _email = "email@email.com";
-  String _password = "123456";
+  String _email = const String.fromEnvironment('defaultEmail',
+      defaultValue: "email@email.com");
+  String _password =
+      const String.fromEnvironment('defaultPassword', defaultValue: "123456");
 
   String _msgErro = "";
 

@@ -47,6 +47,10 @@ class DishesMenuWidget extends StatelessWidget {
                     Consumer<MenuModel>(builder: (context, menuModel, child) {
                       final List<Dish> _filteredDishes = menuModel.filteredMenu;
 
+                      if (_filteredDishes.isEmpty) {
+                        return const Center(child: Text("No dishes found"));
+                      }
+
                       return ListView.separated(
                         padding:
                             EdgeInsets.symmetric(vertical: _maxHeight * 0.02),
@@ -58,7 +62,7 @@ class DishesMenuWidget extends StatelessWidget {
                             dishPrice: _filteredDishes[item].dishPrice,
                             dishImage: _filteredDishes[item].dishImage,
                             onPressed: () => debugPrint(
-                                "Prato clicado: ${_filteredDishes[item].dishName}"),
+                                "Clicked dish: ${_filteredDishes[item].dishName}"),
                           );
                         },
                         separatorBuilder: (_, __) => const SizedBox(

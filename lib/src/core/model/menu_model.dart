@@ -30,6 +30,19 @@ class MenuModel extends ChangeNotifier {
 
   void addDish(Dish dish) {
     _menu.add(dish);
+    _filteredMenu.add(dish);
+    notifyListeners();
+  }
+
+  void addAllDishes(List<Dish> dishes) {
+    _menu.addAll(dishes);
+    _filteredMenu.addAll(dishes);
+    notifyListeners();
+  }
+
+  void clearAll() {
+    _menu.clear();
+    _filteredMenu.clear();
     notifyListeners();
   }
 }

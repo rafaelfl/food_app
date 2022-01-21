@@ -1,53 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/core/model/dish.dart';
-import 'package:ifood_clone/src/core/model/menu_model.dart';
+import 'package:ifood_clone/src/screens/home_screen/tabs/favorite/favorite_tab_widget.dart';
+import 'package:ifood_clone/src/screens/home_screen/tabs/last_orders/last_orders_tab_widget.dart';
+import 'package:ifood_clone/src/screens/home_screen/tabs/profile/profile_tab_widget.dart';
 import 'package:ifood_clone/src/screens/home_screen/widgets/app_bar_widget.dart';
-import 'package:ifood_clone/src/screens/home_screen/tabs/home_tab_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:ifood_clone/src/screens/home_screen/tabs/home/home_tab_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final MenuModel _menuModel = Provider.of<MenuModel>(context, listen: false);
-
-    final List<Dish> dataDishes = _menuModel.menu;
-
     return DefaultTabController(
-      length: dataDishes.length,
+      length: 4,
       child: Scaffold(
         backgroundColor: const Color(0xFFF2F2F2),
         resizeToAvoidBottomInset: false,
         appBar: AppBarWidget(
           maxWidth: MediaQuery.of(context).size.width,
-          onMenuPressed: () => debugPrint('Menu'),
+          onMenuPressed: () => debugPrint('Drawer'),
           onCartPressed: () => debugPrint('Cart'),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
-            const HomeTabWidget(),
-            Center(
-              child: Text("Favoritos",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1
-                      ?.copyWith(color: Colors.black)),
-            ),
-            Center(
-              child: Text("Perfil",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1
-                      ?.copyWith(color: Colors.black)),
-            ),
-            Center(
-              child: Text("Últimos\npedidos",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1
-                      ?.copyWith(color: Colors.black)),
-            ),
+            HomeTabWidget(),
+            FavoriteTabWidget(),
+            ProfileTabWidget(),
+            LastOrdersTabWidget(),
           ],
         ),
         bottomNavigationBar: SizedBox(

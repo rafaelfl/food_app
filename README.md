@@ -17,7 +17,7 @@
    * [Prerequisites](#-prerequisites)
    * [Installation](#-installation)
    * [Technologies](#-technologies)
-   * [Autor](#-autor)
+   * [Author](#-author)
 
 ---
 
